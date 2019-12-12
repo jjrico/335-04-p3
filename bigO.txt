@@ -1,0 +1,10 @@
+Project #2 – Asgwilanga Caverns Big O Analysis
+
+Jeremy Rico
+Professor Charles Siska
+335 – 04
+November 14 2019
+
+Quick sort has a time complexity of O(logn) 
+Merge sort: O(nlogn) 
+Bubble sort: O(n^2)

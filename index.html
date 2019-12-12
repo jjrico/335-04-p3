@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>335 Project 2</title>
+  <style type="text/css">
+    body {
+      text-align: center;
+      font-family: sans-serif;
+    }
+    canvas {
+      border: 1px solid black;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sort Race</h1>
+  <h4>Time-stamp: <2019-11-21 16:36:21 Jeremy Rico></h4>
+  <canvas id="canv" width="900" height="300"></canvas>
+
+  <script src = "sortRace.js"></script>
+  <script>
+  var canvas = document.getElementById("canv");
+  var context = canvas.getContext("2d");
+
+  var arrMerge = arrQuik = arrBubb = [21, 4, 16, 12, 2, 9, 14, 25, 17, 8, 10];
+
+  window.onload = function( )
+  {
+      let wait = 1500; // Millisecs
+      let stop_cnt = 8; // Stop after this count.
+      let ix = 0; // count.
+      ypos = 12;
+
+      context.fillStyle = 'white';
+      context.font = "12px Arial";
+      context.fillText("Merge Sort", 150, 12);
+      context.fillText("Quicksort", 400, 12);
+      context.fillText("Bubble Sort", 650, 12);
+
+      ypos += 24;
+      context.fillText("Original: ", 12, ypos);
+      log(context, arrMerge, 'white', 150, ypos);
+      log(context, arrQuik, 'white', 400, ypos);
+      log(context, arrBubb, 'white', 650, ypos);
+
+      var timerx = setInterval(
+          function( ) {
+              ++ix;
+              ypos += 24;
+              context.fillText("Pass " + ix.toString(), 12, ypos);
+
+              if (!areEqual(arrMerge, mergeSort(arrMerge))) {
+                arrMerge = mergeSort(arrMerge);
+                log(context, arrMerge, 'white', 150, ypos);
+              }
+              //arrMerge = mergeSort(arrMerge);
+              //log(context, arrMerge, 'white', 150, ypos);
+
+              //arrQuik = quickSort(arrQuik, 0, 10);
+              log(context, arrQuik, 'white', 400, ypos);
+
+              arrBubb = bubblePass(arrBubb);
+              log(context, arrBubb, 'white', 650, ypos);
+  	    if ( ix >= stop_cnt )
+              { clearInterval( timerx ); }
+          } , wait );
+  }
+  </script>
+
+</body>
+</html>
